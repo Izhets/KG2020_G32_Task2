@@ -3,6 +3,7 @@ package com.company;
 import com.company.LineDrawers.BresenhamLineDrawer;
 import com.company.LineDrawers.DDALineDrawer;
 import com.company.LineDrawers.GraphicsLineDrawer;
+import com.company.LineDrawers.WoLineDrawer;
 import com.company.Utils.DrawUtils;
 
 import javax.swing.*;
@@ -31,7 +32,8 @@ public class DrawPanel extends JPanel implements MouseMotionListener {
         bi_g.setColor(Color.BLACK);
         PixelDrawer pd = new GraphicsPixelDrawer(bi_g);
         //LineDrawer ld = new DDALineDrawer(pd);
-        LineDrawer ld = new BresenhamLineDrawer(pd);
+        //LineDrawer ld = new BresenhamLineDrawer(pd);
+        LineDrawer ld = new WoLineDrawer(pd);
         drawAll(ld);
 
 
