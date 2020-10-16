@@ -3,7 +3,7 @@ package com.company;
 import com.company.LineDrawers.BresenhamLineDrawer;
 import com.company.LineDrawers.DDALineDrawer;
 import com.company.LineDrawers.GraphicsLineDrawer;
-import com.company.LineDrawers.WoLineDrawer;
+import com.company.LineDrawers.WuLineDrawer;
 import com.company.Utils.DrawUtils;
 
 import javax.swing.*;
@@ -15,6 +15,7 @@ import java.awt.image.BufferedImage;
 public class DrawPanel extends JPanel implements MouseMotionListener {
 
     private  Point position = new Point (0,0);
+    private BufferedImage imageCache;
 
     public DrawPanel() {
         this.addMouseMotionListener(this);
@@ -23,19 +24,22 @@ public class DrawPanel extends JPanel implements MouseMotionListener {
     @Override
     public void paint(Graphics g) {
         //paint(g);
+
         BufferedImage bi = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_RGB);
         Graphics bi_g = bi.createGraphics();
         g.drawImage(bi,0,0,null);
+
         //LineDrawer ld  = new GraphicsLineDrawer(g);
+
         bi_g.setColor(Color.WHITE);
         bi_g.fillRect(0,0, getWidth(), getHeight());
         bi_g.setColor(Color.BLACK);
         PixelDrawer pd = new GraphicsPixelDrawer(bi_g);
+
         //LineDrawer ld = new DDALineDrawer(pd);
         //LineDrawer ld = new BresenhamLineDrawer(pd);
-        LineDrawer ld = new WoLineDrawer(pd);
+        LineDrawer ld = new WuLineDrawer(pd);
         drawAll(ld);
-
 
 
         g.drawImage(bi,0,0,null);
